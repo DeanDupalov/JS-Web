@@ -3,6 +3,9 @@ function solve(employeesStr, criteria) {
     const [key, value] = criteria.split('-');
 
     function findByCriteria(obj, k, v) {
+        if (k === 'all') {
+            return true
+        }
         return obj[k] === v;
     }
     const result = [];
@@ -40,7 +43,6 @@ const employees = `[{
     "email": "emaldin2@hostgator.com",
     "gender": "Male"
   }]`
-
 const employees2 = `[{
     "id": "1",
     "first_name": "Kaylee",
@@ -66,7 +68,8 @@ const employees2 = `[{
     "email": "ev2@hostgator.com",
     "gender": "Male"
   }]`
-//
-//
+
+
 // solve(employees, 'gender-Female');
-solve(employees2, 'last_name-Johnson');
+// solve(employees2, 'last_name-Johnson');
+solve(employees2, 'all');

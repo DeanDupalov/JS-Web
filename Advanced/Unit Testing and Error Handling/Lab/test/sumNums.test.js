@@ -7,7 +7,7 @@ describe('test sumNums', () => {
         assert.equal(sum([1, 2]), 3)
     })
 
-    it('Takes array as argument', () => {
-        expect()
+    it('Takes array as argument if not raises', () => {
+        expect(() => sum(1,2)).to.throw(TypeError)
     })
 })

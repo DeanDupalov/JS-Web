@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha Lab/test/sumNums.test.js"
+    "test": "mocha Lab/test/rgbToHex.test.js"
   },
   "author": "",
   "license": "ISC",

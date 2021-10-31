@@ -26,4 +26,5 @@ async function makeRequest() {
         fetch('urlExample2'),
         fetch('urlExample3'),
     ]);
+
 }

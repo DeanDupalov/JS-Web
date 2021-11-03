@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data and Authentication</title>
+</head>
+<body>
+<script>
+    async function getData() {
+        const url = `http://localhost:3030/jsonstore/phonebook`;
+
+        const response = await fetch(url);
+        const data = await response.json();
+
+        return data
+    }
+
+    async function getDataById(id) {
+        const url = `http://localhost:3030/jsonstore/phonebook/` + id;
+
+        const response = await fetch(url);
+        const data = await response.json();
+
+        return data
+    }
+
+    async function postData(data) {
+        const url = `http://localhost:3030/jsonstore/phonebook`;
+
+        // const data = {
+        //     person: 'Peter',
+        //     phone: '555-888',
+        // }
+
+        const options = {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        }
+        const response = await fetch(url, options);
+        const result = await response.json();
+
+        return result;
+    }
+
+    async function updateDate(id, data) {
+        const url = `http://localhost:3030/jsonstore/phonebook/` + id;
+
+        const options = {
+            method: 'put',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        }
+
+        const response = await fetch(url, options);
+        const result = await response.json();
+        return result;
+
+    }
+    async function deleteData(id) {
+        const url = `http://localhost:3030/jsonstore/phonebook/` + id;
+
+        const options = {
+            method: 'delete',
+        }
+
+        const response = await fetch(url, options);
+        const result = await response.json();
+        return result;
+    }
+</script>
+</body>
+</html>

@@ -50,7 +50,6 @@ function attachEvents() {
             listComments.appendChild(commentLi);
         })
 
-
     }
 
 }

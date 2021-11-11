@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ccaa878c-55af-462b-a362-c4030fa331c5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Data and Authentication/lab/server/data/advanced.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Data and Authentication/lab/server/data/blog.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Data and Authentication/lab/server/data/bus.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Data and Authentication/lab/server/data/collections.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Data and Authentication/lab/server/data/cookbook.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Data and Authentication/lab/server/data/forecaster.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Data and Authentication/lab/server/data/messenger.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Data and Authentication/lab/server/data/phonebook.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Data and Authentication/lab/server/server.js" beforeDir="false" />
-    </list>
+    <list default="true" id="ccaa878c-55af-462b-a362-c4030fa331c5" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,7 +29,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Data and Authentication" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -59,6 +49,7 @@
       <updated>1636277156181</updated>
       <workItem from="1636277157536" duration="31000" />
       <workItem from="1636277246750" duration="9407000" />
+      <workItem from="1636654521024" duration="56000" />
     </task>
     <servers />
   </component>

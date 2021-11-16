@@ -14,7 +14,7 @@ async function request(url, options) {
         if (response.status === 204) {
             return response;
         }else {
-            return await response.json();
+            return response.json();
         }
 
     } catch (err) {
@@ -56,7 +56,7 @@ export async function del(url) {
 }
 
 export async function login(email, password) {
-    const result = await post('/user/login', {email, password})
+    const result = await post('/users/login', {email, password});
     const userData = {
         email: result.email,
         id: result._id,
@@ -65,7 +65,7 @@ export async function login(email, password) {
     sessionStorage.setItem('userData', JSON.stringify(userData));
 }
 export async function register(email, password) {
-    const result = await post('/user/register', {email, password});
+    const result = await post('/users/register', {email, password});
     const userData = {
         email: result.email,
         id: result._id,
@@ -75,6 +75,6 @@ export async function register(email, password) {
 }
 
 export async function logout() {
-    await get('/user/logout');
+    await get('/users/logout');
     sessionStorage.removeItem('userData');
 }

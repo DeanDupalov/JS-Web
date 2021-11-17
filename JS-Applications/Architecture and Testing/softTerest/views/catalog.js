@@ -40,7 +40,7 @@ function onDetails(event) {
     if(event.target.tagName === 'A'){
         const id = event.target.dataset.id;
         event.preventDefault();
-        console.log(id)
+       
         ctx.goTo('details', id)
     }
 }

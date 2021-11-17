@@ -27,7 +27,8 @@ function createIdeaDiv(idea) {
         e('p', {className: 'infoType'}, 'Description'),
         e('p', {className: 'idea-description'}, idea.description)
         ));
-    const userData = JSON.parse(sessionStorage.getItem('userData'))
+    const userData = JSON.parse(sessionStorage.getItem('userData'));
+    console.log(idea._ownerId);
     if (userData && userData.id === idea._ownerId){
         fragment.appendChild(e('div', {className: 'text-center'},
             e('a', {className: 'btn detb', href: '', onClick: onDelete}, 'Delete')

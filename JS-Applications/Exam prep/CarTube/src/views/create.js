@@ -46,11 +46,15 @@ export function createCarPage(ctx) {
         const brand = formData.get('brand').trim();
         const model = formData.get('model').trim();
         const description = formData.get('description').trim();
-        const year = formData.get('year').trim();
+        const yearStr = formData.get('year').trim();
         const imageUrl = formData.get('imageUrl').trim();
-        const price = formData.get('price').trim();
+        const priceStr = formData.get('price').trim();
 
-        if(brand === '' || model === '' || description === '' || imageUrl === '' || Number(year) < 0 || Number(price) < 0){
+        const year = Number(yearStr);
+        const price = Number(priceStr);
+
+
+        if(brand === '' || model === '' || description === '' || imageUrl === '' || year < 0 || price < 0){
             return alert('All fields are required, Year and Price must be positive!')
         }
 
@@ -60,7 +64,7 @@ export function createCarPage(ctx) {
             description,
             year,
             imageUrl,
-            price
+            price,
         });
 
         ctx.page.redirect('/listings');

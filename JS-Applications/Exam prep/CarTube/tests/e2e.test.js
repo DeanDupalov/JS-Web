@@ -4,8 +4,8 @@ const { expect } = require('chai');
 
 const host = 'http://localhost:3000'; // Application host (NOT service host - that can be anything)
 const interval = 300;
-const DEBUG = true;
-const slowMo = 500;
+const DEBUG = false;
+const slowMo = 1000;
 
 const mockData = require('./mock-data.json');
 const endpoints = {
@@ -459,7 +459,7 @@ describe('E2E tests', function () {
         });
     });
 
-    describe.only('User Profile Page [ 10 Points ]', async () => {
+    describe('User Profile Page [ 10 Points ]', async () => {
 
         // Login user
         beforeEach(async () => {

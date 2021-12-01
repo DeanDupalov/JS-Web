@@ -1,23 +1,35 @@
 import {html} from './../../node_modules/lit-html/lit-html.js'
 import {getCarsByYear} from "../api/data.js";
 
+
+
+export let filteredCatalogTemplateBeforeSearch = (onClick) => html`
+<section id="search-cars">
+    <h1>Filter by year</h1>
+
+    <div class="container">
+        <input id="search-input" type="text" name="search" placeholder="Enter desired production year">
+        <button @click=${onClick} class="button-list">Search</button>
+    </div>
+    
+</section>`;
+
 export let filteredCatalogTemplate = (cars, onClick) => html`
-    <section id="search-cars">
-        <h1>Filter by year</h1>
+<section id="search-cars">
+    <h1>Filter by year</h1>
 
-        <div class="container">
-            <input id="search-input" type="text" name="search" placeholder="Enter desired production year">
-            <button @click=${onClick} class="button-list">Search</button>
-        </div>
+    <div class="container">
+        <input id="search-input" type="text" name="search" placeholder="Enter desired production year">
+        <button @click=${onClick} class="button-list">Search</button>
+    </div>
 
-        <h2>Results:</h2>
-        <div class="listings">
-            ${cars.length === 0
-                    ? html`<p class="no-cars"> No results.</p>`
-                    : cars.map(carCard)}
-        </div>
-    </section>
-`;
+    <h2>Results:</h2>
+    <div class="listings">
+        ${cars.length === 0
+                ? html`<p class="no-cars"> No results.</p>`
+                : cars.map(carCard)}
+    </div>
+</section>`;
 
 const carCard = (car) => html`
     <div class="listing">
@@ -37,10 +49,16 @@ const carCard = (car) => html`
     </div>`;
 
 export async function filteredCatalogPage(ctx) {
-    ctx.render(filteredCatalogTemplate([]));
 
+    ctx.render(filteredCatalogTemplateBeforeSearch(onClick));
 
-}
-function onClick() {
-    console.log('on click')
+    async function onClick() {
+        const yearInput = document.getElementById('search-input');
+        const yearStr = yearInput.value;
+
+        const cars = await getCarsByYear(Number(yearStr));
+        ctx.render(filteredCatalogTemplate(cars, onClick));
+
+    }
+
 }

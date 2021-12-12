@@ -1,7 +1,7 @@
 class Movie {
-    constructor(name, price) {
-        this.movieName = name;
-        this.ticketPrice = Number(price);
+    constructor(movieName, ticketPrice) {
+        this.movieName = movieName;
+        this.ticketPrice = Number(ticketPrice);
         this.screenings = [];
         this._totalProfit = 0;
         this._totalSoldTickets = 0;
@@ -12,16 +12,16 @@ class Movie {
             date,
             hall,
             description,
-
         }
 
-        for (const s of this.screenings) {
-            if (s.date === date && s.hall === hall) {
-                throw Error(`Sorry, ${hall} hall is not available on ${date}`)
-            }
+        let existScreening = this.screenings.find((s) => s.date === date && s.hall === hall);
+
+        if (existScreening !== undefined){
+            throw Error(`Sorry, ${hall} hall is not available on ${date}`)
         }
+
         this.screenings.push(screening);
-        return `New screening of ${this.movieName} is added.`
+        return`New screening of ${this.movieName} is added.`
     }
 
     endScreening(date, hall, soldTickets) {
@@ -37,37 +37,31 @@ class Movie {
             throw Error(`Sorry, there is no such screening for ${this.movieName} movie.`)
         }
 
-        let profit = soldTickets * this.ticketPrice;
-        this._totalProfit += profit;
         this._totalSoldTickets += soldTickets;
-        this.screenings.splice(screeningIdx, 1);
-        return `${this.movieName} movie screening on ${date} in ${hall} hall has ended. Screening profit: ${profit}`
+        let currentProfit = soldTickets * this.ticketPrice;
+        this._totalProfit += currentProfit;
 
+        this.screenings.splice(screeningIdx, 1)
+        return `${this.movieName} movie screening on ${date} in ${hall} hall has ended. Screening profit: ${currentProfit}`
     }
-
     toString() {
-        const result = [
+        let result = [
             `${this.movieName} full information:`,
             `Total profit: ${this._totalProfit.toFixed(0)}$`,
             `Sold Tickets: ${this._totalSoldTickets}`
-        ];
-
-        if (this.screenings.length === 0) {
-            result.push('No more screenings!');
-        } else {
-            result.push('Remaining film screenings:');
-            this.screenings.sort((a, b) => a.hall.localeCompare(b.hall));
-            this.screenings.forEach(
-                s => result.push(`${s.hall} - ${s.date} - ${s.description}`)
-            )
+        ]
+        if(this.screenings){
+            result.push('Remaining film screenings:')
+            this.screenings.sort((a, b) => a.hall.localeCompare(b.hall))
+            this.screenings.forEach(m => {
+                result.push(`${m.hall} - ${m.date} - ${m.description}`)
+            });
+        }else {
+            result.push('No more screenings!')
         }
-
         return result.join('\n');
-
     }
-
 }
-
 
 let m = new Movie('Wonder Woman 1984', '10.00');
 console.log(m.newScreening('October 2, 2020', 'IMAX 3D', `3D`));
@@ -82,3 +76,4 @@ m.newScreening('October 5, 2020', 'Main', `regular`);
 m.newScreening('October 3, 2020', '235', `regular`);
 m.newScreening('October 4, 2020', 'Main', `regular`);
 console.log(m.toString());
+

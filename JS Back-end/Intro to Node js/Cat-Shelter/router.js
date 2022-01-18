@@ -46,7 +46,6 @@ function defaultAction(req, res) {
 
 const router = {
     main,
-    register,
     get,
     post
 }

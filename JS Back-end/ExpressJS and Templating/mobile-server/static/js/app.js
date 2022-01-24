@@ -3,10 +3,10 @@ document.getElementById('cars').addEventListener('click', ({target}) => {
         const desc = target.parentElement.querySelector('.description');
         if (desc.style.display === 'block') {
             desc.style.display = 'none';
-            target.textContent = 'Show More';
+            target.textContent = 'SHOW MORE';
         } else {
             desc.style.display = 'block';
-            target.textContent = 'Hide';
+            target.textContent = 'HIDE';
         }
     }
 });

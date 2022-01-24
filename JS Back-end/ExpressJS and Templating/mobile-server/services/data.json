@@ -5,16 +5,10 @@
     "imageUrl": "11642784212322196_2Z.jpg",
     "price": 11900
   },
-  "6476da65-f254": {
-    "name": "Subaru Legacy 2.0i 4x4",
-    "description": "202 800 km. Newly imported. Manual transmission. Petrol engine.",
-    "imageUrl": "11637411542178388_Nw.jpg",
-    "price": 3099
-  },
-  "3ba2d888-1ce4": {
-    "name": "VW Golf 1.9 TDI 90ps High-Line",
-    "description": "THE PRICE IS NON-NEGOTIABLE!!! Newly imported, 202 799 km, 90hp diesel. Manual transmission.",
+  "d6649b85-6f25": {
+    "name": "Edit VW Golf 1.9 TDI 90ps High-Line ",
+    "description": "Edit  THE PRICE IS NON-NEGOTIABLE!!! Newly imported, 202 799 km, 90hp diesel. Manual transmission.",
     "imageUrl": "11642697845129757_i2.jpg",
-    "price": 2699
+    "price": 2500
   }
 }

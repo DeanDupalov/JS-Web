@@ -1,4 +1,4 @@
-const {Schema, model} = require('mongoose');
+const {Schema, model, Types: {ObjectId}} = require('mongoose');
 
 
 const carSchema = new Schema({
@@ -6,12 +6,24 @@ const carSchema = new Schema({
         type: String,
         required: true
     },
-    description: {type: String},
-    imageUrl: {type: String},
+    description: {
+        type: String,
+        default: ''
+    },
+    imageUrl: {
+        type: String,
+        default: 'No Image'
+    },
     price: {
         type: Number,
         min: [1, 'Price must be at least $1, now is {VALUE}'],
+        required: true
     },
+    accessories: {
+        type: [ObjectId],
+        default: [],
+        ref: 'Accessory',
+    }
 });
 const Car = model('Car', carSchema)
 module.exports = Car;

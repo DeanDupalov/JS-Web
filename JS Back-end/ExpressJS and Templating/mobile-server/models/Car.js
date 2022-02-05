@@ -23,6 +23,10 @@ const carSchema = new Schema({
         type: [ObjectId],
         default: [],
         ref: 'Accessory',
+    },
+    isDeleted: {
+        type: Boolean,
+        default: false
     }
 });
 const Car = model('Car', carSchema)

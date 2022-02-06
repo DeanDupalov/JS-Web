@@ -3,7 +3,7 @@ module.exports= {
         const id = req.params.id;
         const car = await req.storage.getCarById(id);
         if(car){
-            console.log(car.accessories)
+            console.log(res.locals)
             res.render('details', {car, title: `${car.name}`});
         }else {
             res.redirect('/404');

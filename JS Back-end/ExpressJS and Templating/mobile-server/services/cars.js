@@ -40,11 +40,12 @@ async function createCar(car) {
     await Car.create(car);
 }
 
-async function updateById(id, car) {
+async function updateById(id, car, ownerId) {
    // минава през ограничени валидатори
    // await Car.findByIdAndUpdate(id, car, {runValidators: true});
 
    const existing = await Car.findById(id).where({isDeleted: false});
+
 
    existing.name = car.name;
    existing.description = car.description;
@@ -53,6 +54,7 @@ async function updateById(id, car) {
    existing.accessories = car.accessories;
 
    await existing.save();
+
 }
 
 async function deleteById(id) {

@@ -26,8 +26,14 @@ const carSchema = new Schema({
     },
     isDeleted: {
         type: Boolean,
-        default: false
+        default: false,
+    },
+    owner: {
+        type: ObjectId,
+        ref: 'User',
     }
 });
+
+
 const Car = model('Car', carSchema)
 module.exports = Car;

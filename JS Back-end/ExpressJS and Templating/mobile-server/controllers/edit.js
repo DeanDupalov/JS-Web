@@ -3,7 +3,7 @@ module.exports = {
         const id = req.params.id;
         const car = await req.storage.getCarById(id);
 
-        if(car.owner !== req.session.user.id){
+        if(car.owner != req.session.user.id){
             return res.redirect('/login')
         }
 
@@ -23,8 +23,12 @@ module.exports = {
             price: Number(req.body.price),
         }
         try {
-            await req.storage.updateById(id, car, req.session.user.id);
-            res.redirect('/');
+            if(await req.storage.updateById(id, car, req.session.user.id)){
+                res.redirect('/');
+            }else{
+                res.redirect('/login')
+            }
+
         }catch (err) {
             console.log(err.message)
             res.redirect('/404');

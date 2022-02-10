@@ -16,7 +16,7 @@ const {details} = require("./controllers/detais");
 const del = require("./controllers/delete");
 const accessory = require("./controllers/accessory");
 const attach = require("./controllers/attach");
-const auth = require("./controllers/auth");
+const authController = require("./controllers/auth");
 
 const {notFound} = require("./controllers/notFound");
 const {isLoggedIn} = require("./services/utils");
@@ -70,15 +70,7 @@ async function start() {
         .get(isLoggedIn(),attach.get)
         .post(isLoggedIn(),attach.post);
 
-    app.route('/register')
-        .get(auth.registerGet)
-        .post(auth.registerPost);
-
-    app.route('/login')
-        .get(auth.loginGet)
-        .post(auth.loginPost);
-
-    app.get('/logout', auth.logout);
+    app.use(authController);
 
     app.all('*', notFound);
 

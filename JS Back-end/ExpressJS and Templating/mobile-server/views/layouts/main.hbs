@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>{{{title}}}</title>
     <link href="/static/css/site.css" type="text/css" rel="stylesheet">
-    <link rel='shortcut icon' type='image/x-icon' href='/static/images/favicon.png' />
+    <link rel='shortcut icon' type='image/x-icon' href='/static/images/favicon.png'/>
 </head>
 
 <body>
@@ -16,17 +16,25 @@
             <li><a href="/">Browse</a></li>
             <li><a href="/about">About</a></li>
             {{#if hasUser}}
-            <li><a href="/create">Publish Car</a></li>
-            <li><a href="/accessory">Create Accessory</a></li>
-            <li><a href="/logout">Logout</a></li>
-            <li>Hello, {{user.username}}</li>
+                <li><a href="/create">Publish Car</a></li>
+                <li><a href="/accessory">Create Accessory</a></li>
+                <li><a href="/logout">Logout</a></li>
+                <li>Hello, {{user.username}}</li>
             {{else}}
-            <li><a href="/login">Login</a></li>
-            <li><a href="/register">Register</a></li>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
             {{/if}}
 
         </ul>
     </header>
+    {{#if errors}}
+        <div id="notifications">
+            {{#each errors}}
+                <p>{{msg}}</p>
+            {{/each}}
+        </div>
+    {{/if}}
+
     <main>
 
         {{{body}}}

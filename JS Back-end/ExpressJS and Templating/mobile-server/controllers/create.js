@@ -1,3 +1,4 @@
+const {mapErrors} = require("../services/utils");
 module.exports = {
     get(req, res) {
         res.render('create', {title: 'Car Listing'});
@@ -14,8 +15,9 @@ module.exports = {
             await req.storage.createCar(car);
             res.redirect('/');
         }catch (err) {
-            console.error(err.message)
-            res.redirect('/create');
+            res.locals.errors = mapErrors(err);
+
+            res.render('create', {title: 'Car Listing', car});
         }
 
     }

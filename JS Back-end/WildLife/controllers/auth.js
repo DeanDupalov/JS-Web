@@ -1,5 +1,5 @@
 const {register, login} = require("../sevices/user");
-const mapErrors = require("../util/mappers");
+const {mapErrors} = require("../util/mappers");
 const {isGuest, isUser} = require("../middleware/guards");
 
 
@@ -12,14 +12,18 @@ router.get('/register', isGuest(), (req, res) => {
 //TODO check form action, method, field names
 router.post('/register', isGuest(), async (req, res) => {
     try {
+        if (req.body.password .trim() == '') {
+            throw new Error('Password is required.')
+        }
+
         if (req.body.password != req.body.repass) {
             throw new Error('Passwords do not match.')
         }
         const user = await register(
-            req.body.firstName,
-            req.body.lastName,
-            req.body.email,
-            req.body.password
+            req.body.firstName.trim(),
+            req.body.lastName.trim(),
+            req.body.email.trim(),
+            req.body.password.trim()
         );
 
         req.session.user = user;

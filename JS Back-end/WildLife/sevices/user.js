@@ -3,7 +3,9 @@ const {hash, compare} = require('bcrypt');
 
 // TODO add all fields required by exam
 async function register(firstName, lastName, email, password) {
+    console.log(email)
     const existing = await getUserByEmail(email);
+    console.log(existing)
 
     if (existing) {
         throw new Error('Email is taken');

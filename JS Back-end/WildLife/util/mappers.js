@@ -10,4 +10,24 @@ function mapErrors(error) {
     }
 }
 
-module.exports = mapErrors;
+function mapPost(post) {
+    const model = {
+        id: post._id,
+        title: post.title,
+        keyword: post.keyword,
+        location: post.location,
+        date: post.date,
+        image: post.image,
+        description: post.description,
+        author: post.author,
+        votes: post.votes,
+        rating: post.rating,
+    };
+
+    return model
+}
+
+module.exports = {
+    mapErrors,
+    mapPost
+};

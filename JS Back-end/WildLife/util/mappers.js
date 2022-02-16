@@ -19,12 +19,20 @@ function mapPost(post) {
         date: post.date,
         image: post.image,
         description: post.description,
-        author: post.author,
+        author: authorViewModel(post.author),
         votes: post.votes,
         rating: post.rating,
     };
 
     return model
+}
+
+function authorViewModel(user) {
+    return {
+        id: user._id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+    }
 }
 
 module.exports = {

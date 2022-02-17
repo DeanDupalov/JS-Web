@@ -20,13 +20,19 @@ function mapPost(post) {
         image: post.image,
         description: post.description,
         author: authorViewModel(post.author),
-        votes: post.votes,
+        votes: post.votes.map(voterViewModel),
         rating: post.rating,
     };
 
     return model
 }
+function voterViewModel(user) {
+    return {
+        _id: user._id,
+        email: user.email,
+    }
 
+}
 function authorViewModel(user) {
     return {
         id: user._id,

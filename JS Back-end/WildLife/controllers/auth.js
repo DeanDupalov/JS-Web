@@ -12,7 +12,7 @@ router.get('/register', isGuest(), (req, res) => {
 //TODO check form action, method, field names
 router.post('/register', isGuest(), async (req, res) => {
     try {
-        if (req.body.password .trim() == '') {
+        if (req.body.password.trim() == '') {
             throw new Error('Password is required.')
         }
 

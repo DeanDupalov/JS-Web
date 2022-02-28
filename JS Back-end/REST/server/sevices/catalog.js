@@ -11,7 +11,7 @@ async function create(item) {
     return result;
 }
 
-async function getById(id) {
+function getById(id) {
     return Item.findById(id);
 
 }

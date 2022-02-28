@@ -1,4 +1,4 @@
-const {Schema, model} = require('mongoose');
+const {Schema, model, Types: {ObjectId}} = require('mongoose');
 
 const itemSchema = new Schema({
     make: {
@@ -26,7 +26,8 @@ const itemSchema = new Schema({
         min: [0, 'Field Price can not be negative number.']
     },
     img: {type: String, required: [true, 'Field Image is required.']},
-    material: {type: String}
+    material: {type: String},
+    owner: {type: ObjectId, ref: 'User', required: true},
 
 });
 

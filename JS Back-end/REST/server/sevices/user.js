@@ -1,12 +1,15 @@
 const User = require("../models/User");
 const {hash, compare} = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
-// TODO add all fields required by exam
+const JWT_SECRET = 'My top secret key';
+const blackList = [];
+
 async function register(email, password) {
     const existing = await getUserByUsername(email);
 
     if (existing) {
-        throw new Error('Username is taken');
+        throw new Error('Email is taken');
     }
 
     const hashedPassword = await hash(password, 10);
@@ -16,24 +19,28 @@ async function register(email, password) {
         hashedPassword
     });
     await user.save();
-    return user;
+    return createSession(user);
 }
 
 async function login(email, password) {
     const user = await getUserByUsername(email);
 
     if (!user) {
-        throw new Error('User does not exist.');
+        throw new Error('Incorrect email or password!');
     }
     const hashMatch = await compare(password, user.hashedPassword);
 
-    if(!hashMatch){
-        throw new Error('Incorrect username or password.');
+    if (!hashMatch) {
+        throw new Error('Incorrect email or password.');
     }
-    return user
+    return createSession(user)
 }
 
-// TODO identify user by given identifier
+function logout(token) {
+    blackList.push(token);
+}
+
+
 async function getUserByUsername(email) {
     const user = await User.findOne({email: new RegExp(`^${email}$`, 'i')});
 
@@ -42,7 +49,33 @@ async function getUserByUsername(email) {
 
 
 
+function createSession(user) {
+    return {
+        email: user.email,
+        _id: user._id,
+        accessToken: jwt.sign({
+            email: user.email,
+            _id: user._id
+        }, JWT_SECRET)
+    }
+}
+
+function verifySession(token) {
+    if(blackList.includes(token)){
+        throw new Error('Token is invalidated.')
+    }
+    const payload = jwt.verify(token, JWT_SECRET);
+    return {
+        email: payload.email,
+        _id: payload._id,
+        token
+    }
+}
+
+
 module.exports = {
+    register,
     login,
-    register
+    logout,
+    verifySession
 }

@@ -14,3 +14,10 @@ function add(number) {
 }
 
 console.log(add(1)(3).toString())
+
+
+function positiveSum(arr) {
+    // write your code here
+  }
+  
+  console.log(positiveSum([1,-2,3,4,5]));

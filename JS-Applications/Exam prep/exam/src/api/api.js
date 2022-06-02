@@ -3,6 +3,8 @@ import {clearUserData, getUserData, setUserData, updateUserNav} from "../util.js
 
 const host = 'http://localhost:3030'
 
+
+
 async function request(url, options) {
     try {
         const response = await fetch(host + url, options);
